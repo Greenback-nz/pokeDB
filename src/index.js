@@ -1,9 +1,9 @@
 import './style.css';
 
 import {
-  getPokeCount,
-  getPokeList,
-  getPokeByHabitats,
+  getPlantCount,
+  getPlantList,
+  getPlantByType,
 } from './modules/poke.js';
 import { showCards } from './modules/showCards.js';
 import setupPagination from './modules/pagination.js';
@@ -13,8 +13,8 @@ const startup = async () => {
   document.querySelector('.pagination').classList.add('hide');
   document.querySelector('.loading').classList.remove('hide');
 
-  const pokeCount = await getPokeCount();
-  document.querySelector('.intro .tag').innerText = pokeCount;
+  const plantCount = await getPlantCount();
+  document.querySelector('.intro .tag').innerText = plantCount;
 
   let pageNum = window.location.search.split('page=')[1]
     ? +window.location.search.split('page=')[1]
@@ -23,7 +23,7 @@ const startup = async () => {
   if (pageNum > 56) {
     pageNum = 56;
   }
-  const list = await getPokeList(20 * (pageNum - 1));
+  const list = await getPlantList(20 * (pageNum - 1));
   showCards(list);
 };
 
@@ -35,7 +35,7 @@ document.querySelector('#Habitat').addEventListener('change', async (e) => {
     document.querySelector('.pagination').classList.add('hide');
     document.querySelector('.loading').classList.remove('hide');
 
-    const list = await getPokeByHabitats(e.target.value);
+    const list = await getPlantByType(e.target.value);
     showCards(list, false);
   }
 });

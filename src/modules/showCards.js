@@ -1,4 +1,4 @@
-import { getPoke } from './poke.js';
+import { getPlants } from './poke.js';
 import populate from './modal.js';
 import capitalize from './helpers.js';
 import { addLike, getLikes } from './likes.js';
@@ -24,7 +24,7 @@ const generateCard = (data) => {
     .map(
       (t) => `<span class="chips chip-${t.type.name}">${t.type.name}</span>`,
     )
-    .join('')}
+    .join('')}myplant
     </div>
   </div>
   <div class="actions flex">
